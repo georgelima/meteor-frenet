@@ -14,12 +14,12 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3')
 
   api.use([
-    'ecmascript@0.1.5',
+    'ecmascript',
     'check',
     'stevezhu:lodash@3.10.1',
   ], 'server');
 
-  api.addFiles('index.js', 'server')
+  api.addFiles('meteor-frenet.js', 'server')
 
   api.export('Frenet')
 })

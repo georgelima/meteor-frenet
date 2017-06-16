@@ -82,7 +82,7 @@ function getCostByCarrier(token, data) {
   return carrier.ShippingPrice * 100
 }
 
-export default function(token) {
+function FrenetFactory(token) {
   console.log(`[Frenet] Initialized with this token: ${token}`)
   return {
     getShippingCompaniesInfo: getShippingCompaniesInfo.bind(null, token),
@@ -90,3 +90,9 @@ export default function(token) {
     getCostByCarrier: getCostByCarrier.bind(null, token),
   }
 }
+
+if(!Meteor.settings.frenet){
+	throw new Meteor.Error('[Frenet]', 'settings.json doesnt contain Frenet configs')
+}
+
+Frenet = FrenetFactory(Meteor.settings.frenet.token)
